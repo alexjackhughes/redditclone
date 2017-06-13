@@ -8,9 +8,15 @@ app.config([
 
         $stateProvider
             .state('home', {
-            url: '/home',
-            templateUrl: '/home.html',
-            controller: 'MainCtrl'
+                url: '/home',
+                templateUrl: '/home.html',
+                controller: 'MainCtrl'
+        })
+
+        .state('posts', {
+            url: '/posts/{id}',
+            templateUrl: '/posts.html',
+            controller: 'PostsCtrl'
         });
 
         $urlRouterProvider.otherwise('home');
@@ -21,7 +27,7 @@ app.config([
 app.factory('posts', [function() {
     var o = {
         // Sets a default post
-        posts: [{title: 'Wow, this is a great website', link:'http://alexjackhughes.com', upvotes: 100}]
+        posts: []
     };
     return o;
 }])
@@ -42,7 +48,11 @@ function($scope, posts){
         $scope.posts.push({
             title: $scope.title,
             link: $scope.link,
-            upvotes: 0
+            upvotes: 0,
+            comments: [
+                {author: 'Joe', body: 'Great Job!', upvotes: 0},
+                {author: 'Sam', body: 'I hate it!', upvotes: 0}
+            ]
         });
         $scope.title='';
         $scope.link='';
@@ -52,4 +62,22 @@ function($scope, posts){
     $scope.incrementUpvotes = function(post) {
         post.upvotes += 1;
     }
+}])
+
+app.controller('PostsCtrl', [
+    '$scope',
+    '$stateParams',
+    'posts',
+    function($scope, $stateParams, posts) {
+        $scope.posts = posts.post[$stateParams.id];
+
+        $scope.addComment = function(){
+            if($scope.body === '') { return; }
+            $scope.post.comments.push({
+                body: $scope.body,
+                author: 'user',
+                upvotes: 0
+            });
+            $scope.body = '';
+        }
 }]);

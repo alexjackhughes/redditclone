@@ -11,6 +11,7 @@ from downloading code and using a generic Python server.
 ## Authors
 
 * **Alexander Jack Hughes** - *Main Author* - [AlexJackHughes](https://github.com/alexjackhughes)
+* [alexjackhughes.com](https://alexjackhughes.com)
 
 ## License
 
@@ -18,5 +19,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Thanks to Thinkster for the tutorial, I modified my version from
-* Manfred for teaching me to code
+* Thanks to Thinkster for the tutorial
+* Thanks to Manfred for teaching me the basics
