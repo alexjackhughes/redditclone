@@ -1,19 +1,22 @@
 var app = angular.module('flapperNews', []);
 
+app.factory('posts', [function() {
+    var o = {
+        // Sets a default post
+        posts: [{title: 'Wow, this is a great website', link:'http://alexjackhughes.com', upvotes: 100}]
+    };
+    return o;
+}])
+
 app.controller('MainCtrl', [
 '$scope',
+'posts',
 
 // Logic of creating posts:
-function($scope){
+function($scope, posts){
   $scope.test = 'Reddit Clone - Powered by Alexander Jack Hughes'; // Title of app
 
-  $scope.posts = [ // List of default posts
-        {title: 'post 1', upvotes: 5},
-        {title: 'post 2', upvotes: 2},
-        {title: 'post 3', upvotes: 15},
-        {title: 'post 4', upvotes: 9},
-        {title: 'post 5', upvotes: 4}
-    ];
+  $scope.posts = posts.posts;
 
     // function for creating posts
     $scope.addPost = function(){
