@@ -5,8 +5,7 @@ more about MEAN technologies, and how they work together in an application.
 
 ## Getting Started
 
-App currently isn't in a place where it would be feasible to deploy, aside
-from downloading code and using a generic Python server.
+You should be able to launch app after download with "npm start" from terminal.
 
 ## Authors
 
